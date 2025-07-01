@@ -2,7 +2,6 @@
 import { siteConfig } from "@/config/site";
 import "@/styles/global.css";
 import { ClientRouter } from "astro:transitions";
-// import Posthog from "../posthog.astro";
 
 interface Props {
   title: string;
@@ -10,7 +9,6 @@ interface Props {
   image?: string;
 }
 
-// const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const canonicalURL = Astro.url;
 
 const {
@@ -57,35 +55,5 @@ const isProd = import.meta.env.PROD;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
-
-<!-- {isProd && <Posthog />} -->
-
-<!-- Dark mode with prevent flickering flash between navigations -->
-<script is:inline>
-  const setDarkMode = () => {
-    const theme = (() => {
-      if (
-        typeof localStorage !== "undefined" &&
-        localStorage.getItem("theme")
-      ) {
-        return localStorage.getItem("theme");
-      }
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        return "dark";
-      }
-      return "light";
-    })();
-
-    if (theme === "light") {
-      document.documentElement.classList.remove("dark");
-    } else {
-      document.documentElement.classList.add("dark");
-    }
-    window.localStorage.setItem("theme", theme);
-  };
-
-  setDarkMode();
-  document.addEventListener("astro:after-swap", setDarkMode);
-</script>
 
 <ClientRouter />

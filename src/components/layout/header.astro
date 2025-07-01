@@ -1,7 +1,5 @@
 ---
-import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
-import { Icon } from "astro-icon/components";
 
 type Props = {
   className?: string;
@@ -36,7 +34,7 @@ const { className } = Astro.props;
       class="absolute top-1/2 left-1/2 -translate-x-4 -translate-y-4 md:hidden"
     >
       <a href="/" aria-label="Lucid forms homepage">
-        <Icon name="lucide-forms" class="size-8" />
+        <Logo className="size-8" />
       </a>
     </div>
 

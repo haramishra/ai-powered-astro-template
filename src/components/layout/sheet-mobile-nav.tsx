@@ -3,7 +3,6 @@ import * as React from "react";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { siteConfig } from "@/config/site";
 
 import type { MainNavItem, SidebarNavItem } from "@/types";
 import { Hamburger } from "lucide-react";
@@ -22,13 +21,8 @@ export function SheetMobileNav({
   const mergedMainNavItems = mainNavItems?.filter(
     (item, index, self) =>
       index ===
-      self.findIndex((t) => t.href === item.href && t.title === item.title),
+      self.findIndex((t) => t.href === item.href && t.title === item.title)
   );
-
-  // [
-  //     ...marketingConfig.mainNav,
-  //     ...docsConfig.mainNav,
-  //   ]
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -78,7 +72,7 @@ export function SheetMobileNav({
                       >
                         {item.title}
                       </a>
-                    ),
+                    )
                 )}
               </div>
             ) : null}
@@ -87,7 +81,7 @@ export function SheetMobileNav({
               <div className="flex flex-col space-y-2">
                 {sidebarNavItems.map((item, index) => {
                   const activeItems = item?.items?.filter(
-                    (subItem) => !subItem.disabled,
+                    (subItem) => !subItem.disabled
                   );
 
                   if (!activeItems || activeItems.length === 0) return null;

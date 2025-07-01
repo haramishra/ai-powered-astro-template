@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { Icon } from "astro-icon/components";
 // import SubscribeForm from "@/components/forms/subscribe-form";
 import { MailIcon } from "lucide-react";
+import { Logo } from "../logo";
 
 type Props = {
   className?: string;
@@ -40,11 +41,15 @@ const { className } = Astro.props;
     }
     <div class="flex flex-col items-end md:col-span-2">
       <div class="w-full">
-        <h3 class="text-start">Subscribe to our newsletter</h3>
+        <Logo className="size-12 mb-10" />
+        <h3 class="text-start">
+          In consectetur fugiat nostrud laborum excepteur do.
+        </h3>
         <p class="text-start text-sm text-muted-foreground">
-          Get the latest updates on feature releases, new features, and more.
+          minim culpa sunt voluptate pariatur magna tempor ut irure nostrud
+          ullamco non
         </p>
-        <!-- <SubscribeForm client:only="react" /> -->
+
         <a
           href="mailto:contact@lucidforms.dev"
           class="flex items-center gap-2 text-sm text-muted-foreground mt-2"
