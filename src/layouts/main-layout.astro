@@ -1,0 +1,69 @@
+---
+import Footer from "@/components/layout/footer.astro";
+import Header from "@/components/layout/header.astro";
+import { MainNavigationMenu } from "@/components/nav/main-navigation-menu";
+import { cn } from "@/lib/utils";
+import BaseLayout from "./base-layout.astro";
+import { SheetMobileNav } from "@/components/layout/sheet-mobile-nav";
+import { navMenuConfig } from "@/config/nav-menu";
+// import { ThemeToggle } from "@/components/theme-toggle";
+import { siteConfig } from "@/config/site";
+// import { Icon } from "astro-icon/components";
+import { buttonVariants } from "@/components/ui/button";
+// import { Icons } from "@/icons";
+// import { ArrowRight } from "lucide-react";
+// import { marketingConfig } from "@/config/marketing";
+// import MainNav from "@/components/layout/main-nav.astro";
+
+type Props = {
+  title: string;
+  description?: string;
+  mainClass?: string;
+  frontmatter?: { title: string };
+};
+
+const { title, description, mainClass, frontmatter } = Astro.props;
+---
+
+<BaseLayout title={frontmatter?.title || title} description={description}>
+  <Header className="border-b">
+    <!-- if using only normals links  -->
+    <!-- <MainNav items={marketingConfig.mainNav} slot="left-header" />
+    <SheetMobileNav
+      mainNavItems={marketingConfig.mainNav}
+      slot="mobile-nav-header"
+      client:load
+    /> -->
+
+    <!-- if use Navigation Menu on desktop -->
+    <MainNavigationMenu slot="left-header" client:load />
+    <SheetMobileNav
+      mainNavItems={[...navMenuConfig.links]}
+      sidebarNavItems={[...navMenuConfig.pagesNav]}
+      slot="mobile-nav-header"
+      client:load
+    />
+
+    <div class="flex items-center gap-x-8" slot="right-header">
+      <!-- <ThemeToggle client:load /> -->
+      <div class="lg:flex justify-center gap-3 hidden items-center flex-row">
+        <a
+          class={cn(buttonVariants({ variant: "outline", size: "sm" }))}
+          href={`${siteConfig.appUrl}/login`}>Login</a
+        >
+        <a
+          class={cn(buttonVariants({ variant: "default", size: "sm" }))}
+          href={`${siteConfig.appUrl}/signup`}
+        >
+          Get started &nbsp; &rarr;
+        </a>
+      </div>
+    </div>
+  </Header>
+
+  <main class={cn(mainClass)}>
+    <slot />
+  </main>
+
+  <Footer />
+</BaseLayout>
