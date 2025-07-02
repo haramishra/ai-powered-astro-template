@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Home",
+    "link": "https://ai-powered-astro-template.pages.dev/",
+    "short_description": "The main landing page of the website."
+  },
+  {
+    "title": "Blog",
+    "link": "https://ai-powered-astro-template.pages.dev/blog/",
+    "short_description": "The main blog page with a list of all articles."
+  },
+  {
+    "title": "100x SEO Reach with AI Tools and Strategy",
+    "link": "https://ai-powered-astro-template.pages.dev/blog/100x-seo-reach-ai-tools-strategy/",
+    "short_description": "A blog post about leveraging AI for SEO."
+  },
+  {
+    "title": "AI Automation Category",
+    "link": "https://ai-powered-astro-template.pages.dev/blog/category/ai%20automation/",
+    "short_description": "Blog posts categorized under AI Automation."
+  },
+  {
+    "title": "ISO Certificate",
+    "link": "https://ai-powered-astro-template.pages.dev/legal/certificates/iso/",
+    "short_description": "Information about the ISO certification."
+  },
+  {
+    "title": "Privacy Policy",
+    "link": "https://ai-powered-astro-template.pages.dev/legal/privacy-policy/",
+    "short_description": "The privacy policy for the website."
+  }
+]

@@ -13,9 +13,8 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: import.meta.env.PROD
-    ? "https://ai-powered-astro-template.pages.dev/"
-    : "http://localhost:4321",
+  site: "https://ai-powered-astro-template.pages.dev/",
+
   vite: {
     plugins: [tailwindcss()],
     resolve: {

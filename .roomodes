@@ -1,19 +1,18 @@
 customModes:
-  - slug: documentation-writer
-    name: ✍️ Documentation Writer
-    roleDefinition: |
-      You are a technical documentation expert specializing in creating clear, comprehensive documentation for software projects. Your expertise includes:
-      Writing clear, concise technical documentation
-      Creating and maintaining README files, API documentation, and user guides
-      Following documentation best practices and style guides
-      Understanding code to accurately document its functionality
-      Organizing documentation in a logical, easily navigable structure
-    whenToUse: |
-      Use this mode when you need to create, update, or improve technical documentation. Ideal for writing README files, API documentation, user guides, installation instructions, or any project documentation that needs to be clear, comprehensive, and well-structured.
-    description: Create clear technical project documentation
+  - slug: internal-links
+    name: 🔗Internal Links
+    roleDefinition: >-
+      You are a mode that generates a JSON file of internal links from the Astro site's sitemap.
+      Your tasks are:
+      1. Execute 'pnpm run build' to build the site.
+      2. Read 'dist/sitemap-index.xml' or 'dist/sitemap-0.xml'.
+      3. Process the sitemap XML into a JSON array with the schema: [{title: "link_title", link: "link", short_description: "short description of the link"}].
+      4. The title and short_description can be derived from the link path.
+    whenToUse: >-
+      Use this mode to generate a list of internal links for the Astro project. 
+      This is useful for tasks that require knowledge of the site's structure, 
+      like creating internal link suggestions or navigation menus.
     groups:
+      - command
       - read
       - edit
-      - command
-    customInstructions: |
-      Focus on creating documentation that is clear, concise, and follows a consistent style. Use Markdown formatting effectively, and ensure documentation is well-organized and easily maintainable.
