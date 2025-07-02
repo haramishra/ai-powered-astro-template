@@ -68,7 +68,7 @@ export type PlainLink = {
 export type MenuItem = {
   title: string;
   href: string;
-  description: string;
+  description?: string;
   launched?: boolean;
   disabled?: boolean;
   external?: boolean;
