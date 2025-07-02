@@ -12,57 +12,59 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Badge } from "@/components/ui/badge";
-import { navMenuConfig } from "@/config/nav-menu";
-import type { MenuItem } from "@/types";
+import { nav } from "@/config/nav-menu";
+import type { DropdownItem, MenuItem, NavItem } from "@/types";
 
 import { Logo } from "../logo";
-
-const links = navMenuConfig.links;
-const pages = navMenuConfig.pagesNav[0];
 
 export function MainNavigationMenu() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
-        {links ? (
-          <NavigationMenuItem>
-            {links.map((link) => (
+        {nav.navItems.map((item: NavItem) => (
+          <NavigationMenuItem key={item.value.title}>
+            {item.discriminant === "plainLink" ? (
               <a
-                key={link.href}
-                href={link.href}
+                href={item.value.href}
                 className={navigationMenuTriggerStyle()}
-                {...(link.forceReload ? { "data-astro-reload": true } : {})}
               >
-                {link.title}
+                {item.value.title}
               </a>
-            ))}
+            ) : (
+              <>
+                <NavigationMenuTrigger>
+                  {item.value.title}
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                    <li className="row-span-3">
+                      <a
+                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                        href="/"
+                      >
+                        <Logo className="size-8" />
+                        <div className="mb-2 mt-3 text-lg font-medium">
+                          Lucid forms
+                        </div>
+                        <p className="text-sm leading-tight text-muted-foreground">
+                          Effort less form submissions.
+                        </p>
+                      </a>
+                    </li>
+                    {item.value.items.map((component: DropdownItem) => (
+                      <ListItem
+                        key={component.title}
+                        title={component.title}
+                        href={component.href}
+                        description={component.description}
+                      />
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </>
+            )}
           </NavigationMenuItem>
-        ) : null}
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>{pages.title}</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid gap-3 p-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              <li className="row-span-3">
-                <a
-                  className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                  href="/"
-                >
-                  <Logo className="size-8" />
-                  <div className="mb-2 mt-3 text-lg font-medium">
-                    Lucid forms
-                  </div>
-                  <p className="text-sm leading-tight text-muted-foreground">
-                    Effort less form submissions.
-                  </p>
-                </a>
-              </li>
-
-              {pages.items?.map((page) => (
-                <ListItem key={page.title} {...page} />
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
+        ))}
         <NavigationMenuIndicator />
       </NavigationMenuList>
     </NavigationMenu>

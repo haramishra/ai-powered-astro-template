@@ -5,8 +5,6 @@ import { MainNavigationMenu } from "@/components/nav/main-navigation-menu";
 import { cn } from "@/lib/utils";
 import BaseLayout from "./base-layout.astro";
 import { SheetMobileNav } from "@/components/layout/sheet-mobile-nav";
-import { navMenuConfig } from "@/config/nav-menu";
-
 import { siteConfig } from "@/config/site";
 
 import { buttonVariants } from "@/components/ui/button";
@@ -25,12 +23,7 @@ const { title, description, mainClass, frontmatter } = Astro.props;
   <Header className="border-b">
     <!-- if use Navigation Menu on desktop -->
     <MainNavigationMenu slot="left-header" client:load />
-    <SheetMobileNav
-      mainNavItems={[...navMenuConfig.links]}
-      sidebarNavItems={[...navMenuConfig.pagesNav]}
-      slot="mobile-nav-header"
-      client:load
-    />
+    <SheetMobileNav slot="mobile-nav-header" client:load />
 
     <div class="flex items-center gap-x-8" slot="right-header">
       <div class="lg:flex justify-center gap-3 hidden items-center flex-row">
