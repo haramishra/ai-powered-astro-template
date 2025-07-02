@@ -73,8 +73,16 @@ export type Dropdown = {
 
 export type NavItem = PlainLink | Dropdown;
 
+export type NavCTA = {
+  title: string;
+  href: string;
+  icon?: React.ElementType;
+};
+
 export type Navigation = {
   navItems: NavItem[];
+  navCTA: NavCTA;
+  navCTASecondary?: NavCTA;
 };
 
 export type SidebarItem = {

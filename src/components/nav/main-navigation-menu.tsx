@@ -17,7 +17,7 @@ import type { DropdownItem, MenuItem, NavItem } from "@/types";
 
 import { Logo } from "../logo";
 
-export function MainNavigationMenu() {
+export function MainNavigationMenu({ pathname }: { pathname: string }) {
   return (
     <NavigationMenu>
       <NavigationMenuList>
@@ -26,27 +26,38 @@ export function MainNavigationMenu() {
             {item.discriminant === "plainLink" ? (
               <a
                 href={item.value.href}
-                className={navigationMenuTriggerStyle()}
+                className={cn(
+                  navigationMenuTriggerStyle(),
+                  pathname === item.value.href
+                    ? "text-accent-foreground"
+                    : "text-foreground"
+                )}
               >
                 {item.value.title}
               </a>
             ) : (
               <>
-                <NavigationMenuTrigger>
+                <NavigationMenuTrigger
+                  className={cn(
+                    item.value.items.some((i) => pathname.includes(i.href))
+                      ? "text-accent-foreground"
+                      : "text-foreground"
+                  )}
+                >
                   {item.value.title}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                     <li className="row-span-3">
                       <a
-                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                        className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-gradient-to-b p-6 no-underline outline-none select-none focus:shadow-md"
                         href="/"
                       >
                         <Logo className="size-8" />
-                        <div className="mb-2 mt-3 text-lg font-medium">
+                        <div className="mt-3 mb-2 text-lg font-medium">
                           Lucid forms
                         </div>
-                        <p className="text-sm leading-tight text-muted-foreground">
+                        <p className="text-muted-foreground text-sm leading-tight">
                           Effort less form submissions.
                         </p>
                       </a>
@@ -89,13 +100,13 @@ const ListItem: React.FC<MenuItem> = ({
         href={disabled ? undefined : href}
         {...(forceReload ? { "data-astro-reload": true } : {})}
         className={cn(
-          "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+          "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block space-y-1 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none",
           disabled
-            ? "text-muted-foreground hover:bg-transparent hover:text-muted-foreground"
-            : "",
+            ? "text-muted-foreground hover:text-muted-foreground hover:bg-transparent"
+            : ""
         )}
       >
-        <div className="flex items-center text-sm font-medium leading-none">
+        <div className="flex items-center text-sm leading-none font-medium">
           <span className="mr-2">{title}</span>
           {disabled ? (
             <Badge
@@ -106,12 +117,12 @@ const ListItem: React.FC<MenuItem> = ({
             </Badge>
           ) : null}
           {launched ? (
-            <Badge className="h-5 px-1.5 text-xs font-medium bg-[#ebf5ff] hover:bg-[#ebf5ff] text-[#0068d6]">
+            <Badge className="h-5 bg-[#ebf5ff] px-1.5 text-xs font-medium text-[#0068d6] hover:bg-[#ebf5ff]">
               NEW
             </Badge>
           ) : null}
         </div>
-        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+        <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
           {description}
         </p>
       </a>

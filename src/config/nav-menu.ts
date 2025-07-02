@@ -1,5 +1,6 @@
 import type { NavItem, Navigation } from "@/types";
-
+import { siteConfig } from "./site";
+import { ArrowRight, LogIn } from "lucide-react";
 export const navItems: NavItem[] = [
   {
     discriminant: "plainLink",
@@ -44,4 +45,14 @@ export const navItems: NavItem[] = [
 
 export const nav: Navigation = {
   navItems,
+  navCTA: {
+    title: "Get started",
+    href: `${siteConfig.appUrl}/signup`,
+    icon: ArrowRight,
+  },
+  navCTASecondary: {
+    title: "Login",
+    href: `${siteConfig.appUrl}/login`,
+    icon: LogIn,
+  },
 };

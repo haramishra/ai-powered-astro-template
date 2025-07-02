@@ -1,5 +1,6 @@
 import * as React from "react";
 
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
@@ -10,9 +11,11 @@ import type { NavItem } from "@/types";
 import { Menu } from "lucide-react";
 import { Logo } from "../logo";
 
-interface SheetMobileProps {}
+interface SheetMobileProps {
+  pathname: string;
+}
 
-export function SheetMobileNav({}: SheetMobileProps) {
+export function SheetMobileNav({ pathname }: SheetMobileProps) {
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -42,7 +45,10 @@ export function SheetMobileNav({}: SheetMobileProps) {
                   <a
                     key={item.value.href}
                     href={item.value.href}
-                    className="text-muted-foreground"
+                    className={cn(
+                      "text-foreground",
+                      pathname === item.value.href && "text-primary"
+                    )}
                     onClick={() => setOpen(false)}
                   >
                     {item.value.title}
@@ -52,13 +58,24 @@ export function SheetMobileNav({}: SheetMobileProps) {
                     key={item.value.title}
                     className="flex flex-col space-y-3 pt-6"
                   >
-                    <h4 className="font-medium">{item.value.title}</h4>
-                    <div className="ml-5 flex flex-col space-y-2 border-l-2 border-l-border pl-3">
+                    <h4
+                      className={cn(
+                        item.value.items.some((i) => pathname.includes(i.href))
+                          ? "text-foreground"
+                          : "text-muted-foreground"
+                      )}
+                    >
+                      {item.value.title}
+                    </h4>
+                    <div className="border-l-border ml-5 flex flex-col space-y-2 border-l-2 pl-3">
                       {item.value.items.map((subItem) => (
                         <a
                           key={subItem.href}
                           href={subItem.href}
-                          className="text-muted-foreground"
+                          className={cn(
+                            "text-muted-foreground",
+                            pathname.includes(subItem.href) && "text-foreground"
+                          )}
                           onClick={() => setOpen(false)}
                         >
                           {subItem.title}
@@ -66,8 +83,30 @@ export function SheetMobileNav({}: SheetMobileProps) {
                       ))}
                     </div>
                   </div>
-                ),
+                )
               )}
+            </div>
+            <div className="mt-4 flex flex-col space-y-2">
+              {nav.navCTASecondary && (
+                <a
+                  href={nav.navCTASecondary.href}
+                  className="text-muted-foreground flex items-center"
+                  onClick={() => setOpen(false)}
+                >
+                  {nav.navCTASecondary.icon && (
+                    <nav.navCTASecondary.icon className="mr-2 size-4" />
+                  )}
+                  {nav.navCTASecondary.title}
+                </a>
+              )}
+              <a
+                href={nav.navCTA.href}
+                className="text-muted-foreground flex items-center"
+                onClick={() => setOpen(false)}
+              >
+                {nav.navCTA.icon && <nav.navCTA.icon className="mr-2 size-4" />}
+                {nav.navCTA.title}
+              </a>
             </div>
           </div>
         </ScrollArea>
