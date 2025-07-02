@@ -31,12 +31,39 @@ export type SidebarNavItem = {
 export type SiteConfig = {
   name: string;
   description: string;
-  url: string;
-  appUrl: string;
   ogImage: string;
-  links: {
-    twitter: string;
-    github: string;
+  socialLinks: {
+    type: string;
+    link: string;
+    Icon: string;
+  }[];
+  analytics?: {
+    googleAnalyticsId: string;
+  };
+  Logo?: {
+    path: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
+  settings?: {
+    search: boolean;
+    sticky_header: boolean;
+    pagination: number;
+    summary_length: number;
+  };
+  params?: {
+    contact_form_action: string;
+    copyright: string;
+  };
+  mainCTA: {
+    title: string;
+    href: string;
+    icon?: React.ElementType;
+  };
+  secondaryCTA?: {
+    title: string;
+    href: string;
   };
 };
 

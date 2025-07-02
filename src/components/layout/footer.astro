@@ -15,31 +15,31 @@ const { className } = Astro.props;
 ---
 
 <footer class={cn("border-t", className)}>
-  <div
-    class="container grid grid-cols-1 gap-6 py-14 sm:grid-cols-2 md:grid-cols-5"
-  >
-    {
-      footerLinks.map((section) => (
-        <div>
-          <span class="text-foreground text-sm font-medium">
-            {section.title}
-          </span>
-          <ul class="mt-4 list-inside space-y-2">
-            {section.items?.map((link) => (
-              <li>
-                <a
-                  href={link.href}
-                  class="text-muted-foreground hover:text-primary text-sm"
-                >
-                  {link.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))
-    }
-    <div class="flex flex-col items-end md:col-span-2">
+  <div class="container grid grid-cols-1 gap-8 py-14 md:grid-cols-3">
+    <div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:col-span-2">
+      {
+        footerLinks.map((section) => (
+          <div>
+            <span class="text-foreground text-sm font-medium">
+              {section.title}
+            </span>
+            <ul class="mt-4 list-inside space-y-2">
+              {section.items?.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="text-muted-foreground hover:text-primary text-sm"
+                  >
+                    {link.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+    <div class="flex flex-col items-start text-start md:items-end">
       <div class="w-full">
         <Logo className="mb-10 size-12" />
         <h3 class="text-start">
@@ -79,14 +79,18 @@ const { className } = Astro.props;
       </p>
 
       <div class="flex items-center gap-3">
-        <a
-          href={siteConfig.links.github}
-          target="_blank"
-          rel="noreferrer"
-          class="font-medium underline underline-offset-4"
-        >
-          <Icon name="github" class="size-5" />
-        </a>
+        {
+          siteConfig.socialLinks.map((link) => (
+            <a
+              href={link.link}
+              target="_blank"
+              rel="noreferrer"
+              class="font-medium underline underline-offset-4"
+            >
+              <Icon name={link.Icon} class="size-5" />
+            </a>
+          ))
+        }
         <!-- <ThemeToggle client:load /> -->
       </div>
     </div>
