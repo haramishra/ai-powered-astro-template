@@ -1,11 +1,16 @@
+---
+import { Image } from "astro:assets";
+import placeholder from "@assets/images/blog/placeholder-4.jpg";
+---
+
 <section class="">
   <div class="container py-24">
     <div class="relative h-[500px] flex-1">
       <div
         class="absolute inset-0 flex size-full items-center justify-center overflow-hidden rounded-xl object-cover"
       >
-        <img
-          src="/images/placeholders/original/1600x1200-video.png"
+        <Image
+          src={placeholder}
           alt="video"
           class="inline-block size-full max-w-full object-cover align-middle"
         />
