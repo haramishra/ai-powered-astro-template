@@ -13,7 +13,7 @@ export type MenuItem = BaseNavItem & {
 
 export type MainNavItem = BaseNavItem;
 
-export type SidebarNavItem = {
+export type FooterNavigation = {
   title: string;
   disabled?: boolean;
   external?: boolean;

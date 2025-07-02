@@ -1,4 +1,4 @@
-import type { SidebarNavItem, SiteConfig } from "@/types";
+import type { SiteConfig } from "@/types";
 import { ArrowRight } from "lucide-react";
 
 export const siteConfig: SiteConfig = {
@@ -34,7 +34,7 @@ export const siteConfig: SiteConfig = {
     summary_length: 200,
   },
   params: {
-    contact_form_action: "https://app.lucidforms.co/s/92zSO2F2gL7S9I/",
+    contact_form_action: "",
     copyright: "Designed And Developed by [Kohi Studio](https://kohi.studio)",
   },
 
@@ -60,49 +60,3 @@ export const siteConfig: SiteConfig = {
     ],
   },
 };
-
-export const footerLinks: SidebarNavItem[] = [
-  {
-    title: "Company",
-    items: [
-      { title: "About", href: "#" },
-      { title: "Jobs", href: "#" },
-      { title: "Privacy Policy", href: "/legal/privacy-policy" },
-      { title: "Terms of Service", href: "/legal/terms-of-service" },
-      { title: "Refund Policy", href: "/legal/refund" },
-    ],
-  },
-  {
-    title: "Product",
-    items: [
-      { title: "Pricing", href: "/pricing" },
-      { title: "Blog", href: "/blog" },
-      { title: "Guides", href: "/guides" },
-      { title: "Change Log", href: "/releases" },
-    ],
-  },
-  {
-    title: "Locations",
-    items: [
-      { title: "New York", href: "#" },
-      { title: "London", href: "#" },
-      { title: "Tokyo", href: "#" },
-    ],
-  },
-  {
-    title: "Services",
-    items: [
-      { title: "Web Development", href: "#" },
-      { title: "SEO", href: "#" },
-      { title: "Digital Marketing", href: "#" },
-    ],
-  },
-  {
-    title: "Legal",
-    items: [
-      { title: "Privacy Policy", href: "/legal/privacy-policy" },
-      { title: "Terms of Service", href: "/legal/terms-of-service" },
-      { title: "Refund Policy", href: "/legal/refund" },
-    ],
-  },
-];
