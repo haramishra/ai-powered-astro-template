@@ -2,27 +2,18 @@ import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Separator } from "@/components/ui/separator";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
-import type { MainNavItem, SidebarNavItem } from "@/types";
-import { Hamburger } from "lucide-react";
+import { nav } from "@/config/nav-menu";
+import type { NavItem } from "@/types";
+import { Menu } from "lucide-react";
+import { Logo } from "../logo";
 
-interface SheetMobileProps {
-  mainNavItems?: MainNavItem[];
-  sidebarNavItems?: SidebarNavItem[];
-}
+interface SheetMobileProps {}
 
-export function SheetMobileNav({
-  mainNavItems,
-  sidebarNavItems,
-}: SheetMobileProps) {
+export function SheetMobileNav({}: SheetMobileProps) {
   const [open, setOpen] = React.useState(false);
-
-  const mergedMainNavItems = mainNavItems?.filter(
-    (item, index, self) =>
-      index ===
-      self.findIndex((t) => t.href === item.href && t.title === item.title),
-  );
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -32,83 +23,52 @@ export function SheetMobileNav({
           size="sm"
           className="mr-2 h-8 px-1.5 md:hidden"
         >
-          <Hamburger className="size-5" />
+          <Menu className="size-5" />
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="pr-0">
-        <a href="/" className="flex items-center">
-          <img
-            src="/logo-dark.png"
-            alt="logo"
-            width={144}
-            height={32}
-            className={"hidden dark:block w-32"}
-          />
-          <img
-            src="/logo-light.png"
-            alt="logo"
-            width={144}
-            height={32}
-            className={"dark:hidden block w-32"}
-          />
-        </a>
-        <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-10">
-          <div className="mt-2 mb-20">
-            {mainNavItems?.length ? (
-              <div className="flex flex-col space-y-3">
-                {mergedMainNavItems?.map(
-                  (item) =>
-                    item.href && (
-                      <a
-                        key={item.href}
-                        href={item.href}
-                        className="text-muted-foreground"
-                        onClick={() =>
-                          item.href.startsWith("/#")
-                            ? setOpen(false)
-                            : undefined
-                        }
-                      >
-                        {item.title}
-                      </a>
-                    ),
-                )}
-              </div>
-            ) : null}
-
-            {sidebarNavItems?.length ? (
-              <div className="flex flex-col space-y-2">
-                {sidebarNavItems.map((item, index) => {
-                  const activeItems = item?.items?.filter(
-                    (subItem) => !subItem.disabled,
-                  );
-
-                  if (!activeItems || activeItems.length === 0) return null;
-
-                  return (
-                    <div key={index} className="flex flex-col space-y-3 pt-6">
-                      <h4 className="font-medium">{item.title}</h4>
-                      {activeItems.map((subItem, idx) => (
-                        <React.Fragment key={subItem.href + idx}>
-                          {subItem.href ? (
-                            <a
-                              href={subItem.href}
-                              target={subItem?.external ? "_blank" : undefined}
-                              className="text-muted-foreground"
-                            >
-                              {subItem.title}
-                            </a>
-                          ) : (
-                            subItem.title
-                          )}
-                        </React.Fragment>
+        <div className="px-4">
+          <a href="/" className="flex items-center">
+            <Logo className="size-10" />
+          </a>
+        </div>
+        <Separator className="my-4" />
+        <ScrollArea className="h-[calc(100vh-8rem)] pb-10 pl-6">
+          <div className="mb-20">
+            <div className="flex flex-col space-y-3">
+              {nav.navItems.map((item: NavItem) =>
+                item.discriminant === "plainLink" ? (
+                  <a
+                    key={item.value.href}
+                    href={item.value.href}
+                    className="text-muted-foreground"
+                    onClick={() => setOpen(false)}
+                  >
+                    {item.value.title}
+                  </a>
+                ) : (
+                  <div
+                    key={item.value.title}
+                    className="flex flex-col space-y-3 pt-6"
+                  >
+                    <h4 className="font-medium">{item.value.title}</h4>
+                    <div className="ml-5 flex flex-col space-y-2 border-l-2 border-l-border pl-3">
+                      {item.value.items.map((subItem) => (
+                        <a
+                          key={subItem.href}
+                          href={subItem.href}
+                          className="text-muted-foreground"
+                          onClick={() => setOpen(false)}
+                        >
+                          {subItem.title}
+                        </a>
                       ))}
                     </div>
-                  );
-                })}
-              </div>
-            ) : null}
+                  </div>
+                ),
+              )}
+            </div>
           </div>
         </ScrollArea>
       </SheetContent>
