@@ -20,7 +20,7 @@ const { icon, type = "default" } = Astro.props;
       type === "warning",
   })}
 >
-  {icon && <span class="mr-3 text-xl font-icon-callout">{icon}</span>}
+  {icon && <span class="font-icon-callout mr-3 text-xl">{icon}</span>}
   <div class="callout">
     <slot />
   </div>
