@@ -1,1 +1,5 @@
-pnpm run format:write
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+pnpm format:write
+
