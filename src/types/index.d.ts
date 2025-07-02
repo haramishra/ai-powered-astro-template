@@ -1,9 +1,9 @@
-export type NavItem = {
+export type BaseNavItem = {
   title: string;
   href: string;
   disabled?: boolean;
 };
-export type MenuItem = NavItem & {
+export type MenuItem = BaseNavItem & {
   image?: string;
   description?: string;
   launched?: boolean;
@@ -11,7 +11,7 @@ export type MenuItem = NavItem & {
   forceReload?: boolean;
 };
 
-export type MainNavItem = NavItem;
+export type MainNavItem = BaseNavItem;
 
 export type SidebarNavItem = {
   title: string;
@@ -49,11 +49,46 @@ export type MarketingConfig = {
   mainNav: MainNavItem[];
 };
 
-export type NavMenuConfig = {
-  pagesNav: SidebarNavItem[];
+export type PlainLink = {
+  discriminant: 'plainLink'
+  value: {
+    title: string
+    href: string
+  }
+}
 
-  links: MenuItem[];
-};
+export type DropdownItem = {
+  title: string
+  href: string
+  description: string
+}
+
+export type Dropdown = {
+  discriminant: 'dropdown'
+  value: {
+    title: string
+    items: DropdownItem[]
+  }
+}
+
+export type NavItem = PlainLink | Dropdown
+
+export type Navigation = {
+  navItems: NavItem[]
+}
+
+export type SidebarItem = {
+  title: string
+  href?: string
+  icon?: React.ReactNode
+  items?: {
+    title: string
+    href: string
+    description?: string
+  }[]
+}
+
+
 
 export type DashboardConfig = {
   mainNav: MainNavItem[];

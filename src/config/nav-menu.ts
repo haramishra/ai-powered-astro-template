@@ -1,44 +1,47 @@
-import type { NavMenuConfig } from "@/types";
+import type { NavItem, Navigation } from "@/types";
 
-export const navMenuConfig: NavMenuConfig = {
-  pagesNav: [
-    {
+export const navItems: NavItem[] = [
+  {
+    discriminant: "plainLink",
+    value: {
+      title: "Home",
+      href: "/",
+    },
+  },
+  {
+    discriminant: "dropdown",
+    value: {
       title: "Resources",
       items: [
         {
-          title: "Platform guides",
-          href: "/guides",
-          description: "Guides that help you get started with Lucid forms.",
-          image: "/images/examples/changelog.jpg",
-        },
-
-        {
-          title: "Blogs",
+          title: "Blog",
           href: "/blog",
-          description: "Blogs with the latest news and tutorials.",
-          image: "/images/examples/static-blog.jpg",
+          description: "Exlplre our blog",
         },
         {
-          title: "Docs",
-          href: "/docs/getting-started",
-          description:
-            "A Markdown/MDX docs site built using Content Collections.",
-          image: "/images/examples/documentation.jpg",
+          title: "Guides",
+          href: "/guides",
+          description: "Explore our guide",
         },
       ],
     },
-  ],
-
-  links: [
-    {
+  },
+  {
+    discriminant: "plainLink",
+    value: {
+      title: "Features",
+      href: "/features",
+    },
+  },
+  {
+    discriminant: "plainLink",
+    value: {
       title: "Pricing",
       href: "/pricing",
-      description: "Lucid forms pricing page",
     },
-    {
-      title: "Contact us",
-      href: "/contact",
-      description: "Lucid forms pricing page",
-    },
-  ],
+  },
+];
+
+export const nav: Navigation = {
+  navItems,
 };
