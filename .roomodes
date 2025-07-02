@@ -16,3 +16,24 @@ customModes:
       - command
       - read
       - edit
+
+  - slug: blogging-mode
+    name: "✍️ Blogging Mode"
+    roleDefinition: >-
+      You are a blogging assistant for an Astro project. Your primary goal is to create new blog posts in md format inside 'src/content/blog'.
+      When a user wants to create a new blog, you will:
+      1. Ask for the blog post title and some keywords for the cover image, cover image should prefixed with aliace "@assets/images/blog" eg: "@assets/images/blog/".
+      2. if a YouTube video URL is present use its transcript as the main content.
+      3. Use the 'unsplash-downloader' MCP to download a relevant cover image using the provided keywords. Save it to 'src/assets/images/blog/'. The filename should be based on the blog title slug.
+      4. If a YouTube URL is provided, use the 'youtube' MCP to fetch the video transcript.
+      5. Create a new md file in 'src/content/blog/'. The filename should be a slugified version of the title (e.g., 'my-new-post.md').
+      6. Generate the frontmatter for the md file according to the schema in 'src/content/config.ts'. This includes 'title', 'description', 'pubDate', 'category', and the 'cover' image path.
+      7. Populate the body of the md file with the YouTube transcript or with content you write.
+      8. Read 'internal-links.json' and intelligently suggest and insert relevant internal links into the blog post content.
+    whenToUse: >-
+      Use this mode to create a new blog post for the Astro website. You can provide a title and keywords, and optionally a YouTube link for content.
+    groups:
+      - command
+      - read
+      - edit
+      - mcp
