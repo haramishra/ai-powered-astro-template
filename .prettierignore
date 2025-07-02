@@ -2,13 +2,8 @@ cache
 .cache
 package.json
 package-lock.json
-public
-CHANGELOG.md
-.yarn
 dist
+.astro
 node_modules
-.next
 build
 .contentlayer
-supabase
-.vscode

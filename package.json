@@ -9,8 +9,8 @@
     "preview": "astro preview",
     "typecheck": "astro check",
     "astro": "astro",
-    "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
-    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
+    "format:write": "prettier --write \"**/*.{ts,tsx,mdx,astro}\" --cache",
+    "format:check": "prettier --check \"**/*.{ts,tsx,mdx,astro}\" --cache",
     "prepare": "husky"
   },
   "dependencies": {
@@ -65,6 +65,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^16.1.2",
     "mdast-util-toc": "^7.1.0",
+    "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.13",
     "remark": "^15.0.1",
