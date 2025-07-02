@@ -18,6 +18,7 @@ export const siteConfig: SiteConfig = {
   analytics: {
     googleAnalyticsId: "G-XXXXXXXXXX", // Replace with your GA ID
   },
+  //logo should be stored on assets folder to enable image optimization
   Logo: {
     path: "",
     alt: "",
@@ -46,6 +47,18 @@ export const siteConfig: SiteConfig = {
     title: "Get Quote",
     href: `/get-quote`,
   },
+  contact: {
+    email: [
+      { link: "mailto:example@example.com", title: "example@example.com" },
+    ],
+    phone: [{ link: "tel:+1234567890", title: "+1 (234) 567-890" }],
+    address: [
+      {
+        link: "https://maps.google.com/?q=123+Main+St",
+        title: "123 Main St, Anytown, USA",
+      },
+    ],
+  },
 };
 
 export const footerLinks: SidebarNavItem[] = [
@@ -66,14 +79,6 @@ export const footerLinks: SidebarNavItem[] = [
       { title: "Blog", href: "/blog" },
       { title: "Guides", href: "/guides" },
       { title: "Change Log", href: "/releases" },
-    ],
-  },
-  {
-    title: "Docs",
-    items: [
-      { title: "Introduction", href: "/docs/getting-started/" },
-      { title: "Installation", href: "/docs/installation/html" },
-      { title: "Team Account", href: "/docs/dashboard/accounts" },
     ],
   },
   {

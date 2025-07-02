@@ -65,6 +65,11 @@ export type SiteConfig = {
     title: string;
     href: string;
   };
+  contact?: {
+    email: { link: string; title: string }[];
+    phone: { link: string; title: string }[];
+    address: { link: string; title: string }[];
+  };
 };
 
 export type DocsConfig = {
