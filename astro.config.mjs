@@ -9,8 +9,13 @@ import icon from "astro-icon";
 
 import mdx from "@astrojs/mdx";
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
+  site: import.meta.env.PROD
+    ? "https://ai-powered-astro-template.pages.dev/"
+    : "http://localhost:4321",
   vite: {
     plugins: [tailwindcss()],
     resolve: {
@@ -20,6 +25,6 @@ export default defineConfig({
     },
   },
 
-  integrations: [react(), icon(), mdx()],
+  integrations: [react(), icon(), mdx(), sitemap()],
   adapter: cloudflare({ imageService: "compile" }),
 });
