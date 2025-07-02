@@ -1,18 +1,3 @@
-export type BaseNavItem = {
-  title: string;
-  href: string;
-  disabled?: boolean;
-};
-export type MenuItem = BaseNavItem & {
-  image?: string;
-  description?: string;
-  launched?: boolean;
-  external?: boolean;
-  forceReload?: boolean;
-};
-
-export type MainNavItem = BaseNavItem;
-
 export type FooterNavigation = {
   title: string;
   disabled?: boolean;
@@ -72,15 +57,6 @@ export type SiteConfig = {
   };
 };
 
-export type DocsConfig = {
-  mainNav: MainNavItem[];
-  sidebarNav: SidebarNavItem[];
-};
-
-export type MarketingConfig = {
-  mainNav: MainNavItem[];
-};
-
 export type PlainLink = {
   discriminant: "plainLink";
   value: {
@@ -89,17 +65,21 @@ export type PlainLink = {
   };
 };
 
-export type DropdownItem = {
+export type MenuItem = {
   title: string;
   href: string;
   description: string;
+  launched?: boolean;
+  disabled?: boolean;
+  external?: boolean;
+  forceReload?: boolean;
 };
 
 export type Dropdown = {
   discriminant: "dropdown";
   value: {
     title: string;
-    items: DropdownItem[];
+    items: MenuItem[];
   };
 };
 

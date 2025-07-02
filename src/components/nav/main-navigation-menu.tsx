@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Badge } from "@/components/ui/badge";
 import { nav } from "@/config/nav-menu";
-import type { DropdownItem, MenuItem, NavItem } from "@/types";
+import type { MenuItem, NavItem } from "@/types";
 
 import { Logo } from "../logo";
 
@@ -62,7 +62,7 @@ export function MainNavigationMenu({ pathname }: { pathname: string }) {
                         </p>
                       </a>
                     </li>
-                    {item.value.items.map((component: DropdownItem) => (
+                    {item.value.items.map((component: MenuItem) => (
                       <ListItem
                         key={component.title}
                         title={component.title}
