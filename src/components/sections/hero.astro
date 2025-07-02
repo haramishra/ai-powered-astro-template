@@ -1,10 +1,47 @@
 ---
 import { Image } from "astro:assets";
 import placeholder from "@assets/images/blog/placeholder-4.jpg";
+import { Button, buttonVariants } from "../ui/button";
+import { siteConfig } from "@/config/site";
+const { mainCTA, secondaryCTA } = siteConfig;
 ---
 
 <section class="">
-  <div class="container py-24">
+  <div class="container py-12">
+    <div class="grid grid-cols-1 gap-4 pb-12 lg:grid-cols-2 lg:gap-12">
+      <div>
+        <h1
+          class="mb-8 flex max-w-6xl text-4xl leading-none font-semibold tracking-tight text-gray-800 md:text-6xl"
+        >
+          Transform your business with our landing page blocks
+        </h1>
+      </div>
+      <div>
+        <p class="text-lg leading-normal text-gray-500">
+          Voluptate do officia voluptate laborum esse non ipsum cillum. Aliqua
+          eiusmod exercitation culpa dolore duis aliquip laborum mollit sit qui
+          labore veniam. Fugiat laboris proident qui sit esse mollit nisi. Qui
+          cupidatat officia do non. Labore fugiat dolore aute elit esse id
+          commodo ad culpa ullamco eu qui consectetur. Laboris adipisicing et
+          sint dolor tempor officia.
+        </p>
+        <div class="mt-8 flex justify-start gap-4">
+          {
+            secondaryCTA && (
+              <a
+                class={buttonVariants({ size: "lg", variant: "outline" })}
+                href={secondaryCTA.href}
+              >
+                {secondaryCTA.title || "Get a quote"}
+              </a>
+            )
+          }
+          <a class={buttonVariants({ size: "lg" })} href={mainCTA.href}>
+            {mainCTA.title || "Get in Touch"}
+          </a>
+        </div>
+      </div>
+    </div>
     <div class="relative h-[500px] flex-1">
       <div
         class="absolute inset-0 flex size-full items-center justify-center overflow-hidden rounded-xl object-cover"
@@ -29,46 +66,6 @@ import placeholder from "@assets/images/blog/placeholder-4.jpg";
           </path>
         </svg>
         <span class="absolute inset-0 z-10 bg-black/50"></span>
-      </div>
-    </div>
-    <div class="grid grid-cols-2 gap-12 pt-12">
-      <div>
-        <h1
-          class="mb-8 flex max-w-6xl text-4xl leading-none font-semibold tracking-tight text-gray-800 md:text-6xl"
-        >
-          Transform your business with our landing page blocks
-        </h1>
-      </div>
-      <div>
-        <p class="text-lg leading-normal text-gray-500">
-          Wicked Blocks offers a wide array of both free and premium components
-          specifically designed for Tailwind CSS. Our extensive collection
-          features meticulously crafted Tailwind blocks that cater to various
-          design needs and preferences.
-        </p>
-        <div class="mt-8 flex justify-start gap-4">
-          <button
-            class="flex items-center rounded-xl bg-blue-600 px-5 py-3 text-center text-base font-medium text-white transition duration-500 ease-in-out hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none lg:px-6"
-            >Get Bundle</button
-          >
-          <button
-            class="flex items-center rounded-xl border border-gray-600 px-5 py-3 text-center font-medium text-gray-600 transition duration-500 ease-in-out hover:bg-gray-100 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none lg:px-6"
-            >See Features<svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              class="ml-1 size-6"
-            >
-              <path
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M5 12h14m-4 4l4-4m-4-4l4 4"></path>
-            </svg></button
-          >
-        </div>
       </div>
     </div>
   </div>

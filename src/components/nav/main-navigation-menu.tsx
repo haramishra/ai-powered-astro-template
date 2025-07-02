@@ -55,10 +55,10 @@ export function MainNavigationMenu({ pathname }: { pathname: string }) {
                       >
                         <Logo className="size-8" />
                         <div className="mt-3 mb-2 text-lg font-medium">
-                          Lucid forms
+                          aliquip officia
                         </div>
                         <p className="text-muted-foreground text-sm leading-tight">
-                          Effort less form submissions.
+                          occaecat eu reprehenderit et
                         </p>
                       </a>
                     </li>
