@@ -1,18 +1,20 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
+import cloudflare from "@astrojs/cloudflare";
 
-import react from '@astrojs/react';
+import react from "@astrojs/react";
 
-import icon from 'astro-icon';
+import icon from "astro-icon";
 
-import mdx from '@astrojs/mdx';
+import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
   vite: {
-      plugins: [tailwindcss()]
-    },
+    plugins: [tailwindcss()],
+  },
 
-  integrations: [react(), icon(), mdx()]
+  integrations: [react(), icon(), mdx()],
+  adapter: cloudflare({ imageService: "compile" }),
 });
