@@ -1,0 +1,46 @@
+{
+  "agencyName": "NovaMind AI",
+  "tagline": "Smarter Digital Growth with AI-Powered Solutions",
+  "about": "NovaMind AI is a full-service AI agency...",
+  "services": [
+    "AI chatbot development",
+    "AI-powered content generation",
+    "Automation & workflow design",
+    "AI strategy consulting",
+    "Custom-trained language models"
+  ],
+  "industries": [
+    "eCommerce",
+    "SaaS startups",
+    "marketing agencies",
+    "real estate",
+    "education",
+    "healthcare",
+    "legal services"
+  ],
+  "useCases": [
+    "Automating lead qualification",
+    "Generating blog articles",
+    "Answering customer questions with trained chatbots",
+    "Automating workflows like proposals or emails",
+    "Summarizing customer feedback"
+  ],
+  "features": [
+    "Chatbot training with your data",
+    "Blog and content generation tools",
+    "Autonomous GPT agents",
+    "Custom API integrations",
+    "Full control over branding, tone, and voice"
+  ],
+  "toneAndStyle": "Professional but friendly, clear and concise...",
+  "customerPersonas": [
+    "Marketing managers",
+    "SaaS founders",
+    "Operations heads"
+  ],
+  "sampleContentIdeas": [
+    "How AI Chatbots Are Transforming Customer Support",
+    "5 Ways Agencies Use AI to Scale Faster",
+    "Why Your Startup Needs an AI-Powered FAQ"
+  ]
+}
