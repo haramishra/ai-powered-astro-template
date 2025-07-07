@@ -30,8 +30,8 @@ export const navItems: NavItem[] = [
   {
     discriminant: "plainLink",
     value: {
-      title: "Features",
-      href: "/features",
+      title: "About Us",
+      href: "/about",
     },
   },
   {
