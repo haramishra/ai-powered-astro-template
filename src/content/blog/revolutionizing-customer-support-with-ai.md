@@ -1,7 +1,7 @@
 ---
 title: "Revolutionizing Customer Support with AI: Faster Responses, Happier Customers (2.5-flash)"
 description: "Discover how AI is transforming customer support, enabling faster responses, personalized interactions, and ultimately leading to happier customers. Learn about key benefits and implementation strategies."
-cover: ../../assets/images/blog/robotic-hand-touching-touchscreen-interface.jpg
+cover: "@/assets/images/blog/computer-screen-with-ai-software-dashboard.jpg"
 category: "AI Transformation"
 pubDate: "2024-07-09"
 ---
