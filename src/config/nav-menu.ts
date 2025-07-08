@@ -37,8 +37,8 @@ export const navItems: NavItem[] = [
   {
     discriminant: "plainLink",
     value: {
-      title: "Pricing",
-      href: "/pricing",
+      title: "Mission",
+      href: "/mission",
     },
   },
 ];
