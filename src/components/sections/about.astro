@@ -1,8 +1,19 @@
 ---
 import Image from "astro/components/Image.astro";
-import aboutImg from "@assets/images/blog/business-team-using-ai-dashboard.jpg";
-import aboutImg2 from "@assets/images/blog/businesspeople-celebrating-success.jpg";
 import { Button } from "../ui/button";
+
+export interface Props {
+  heading: string;
+  paragraph: string;
+  image1: ImageMetadata;
+  image2: ImageMetadata;
+  stats: { value: string; label: string }[];
+  buttonText: string;
+  buttonLink: string;
+}
+
+const { heading, paragraph, image1, image2, stats, buttonText, buttonLink } =
+  Astro.props;
 ---
 
 <section class="relative py-24">
@@ -18,13 +29,13 @@ import { Button } from "../ui/button";
         >
           <Image
             class="rounded-xl object-cover"
-            src={aboutImg2}
+            src={image2}
             alt="about Us image"
           />
         </div>
         <Image
           class="ml-auto rounded-xl object-cover sm:ml-0"
-          src={aboutImg}
+          src={image1}
           alt="about Us image"
         />
       </div>
@@ -38,54 +49,33 @@ import { Button } from "../ui/button";
             <h2
               class="font-manrope text-center text-4xl leading-normal font-bold lg:text-start"
             >
-              Empowering Each Other to Succeed
+              {heading}
             </h2>
             <p
               class="text-center text-base leading-relaxed font-normal lg:text-start"
             >
-              Every project we've undertaken has been a collaborative effort,
-              where every person involved has left their mark. Together, we've
-              not only constructed buildings but also built enduring connections
-              that define our success story.
+              {paragraph}
             </p>
           </div>
           <div
             class="inline-flex w-full items-center justify-center gap-5 sm:gap-10 lg:justify-start"
           >
-            <div class="inline-flex flex-col items-start justify-start">
-              <h3
-                class="font-manrope text-4xl leading-normal font-bold text-gray-900"
-              >
-                33+
-              </h3>
-              <h6 class="text-base leading-relaxed font-normal">
-                Years of Experience
-              </h6>
-            </div>
-            <div class="inline-flex flex-col items-start justify-start">
-              <h4
-                class="font-manrope text-4xl leading-normal font-bold text-gray-900"
-              >
-                125+
-              </h4>
-              <h6 class="text-base leading-relaxed font-normal">
-                Successful Projects
-              </h6>
-            </div>
-            <div class="inline-flex flex-col items-start justify-start">
-              <h4
-                class="font-manrope text-4xl leading-normal font-bold text-gray-900"
-              >
-                52+
-              </h4>
-              <h6 class="text-base leading-relaxed font-normal text-gray-500">
-                Happy Clients
-              </h6>
-            </div>
+            {
+              stats.map((stat) => (
+                <div class="inline-flex flex-col items-start justify-start">
+                  <h3 class="font-manrope text-4xl leading-normal font-bold text-gray-900">
+                    {stat.value}
+                  </h3>
+                  <h6 class="text-base leading-relaxed font-normal">
+                    {stat.label}
+                  </h6>
+                </div>
+              ))
+            }
           </div>
         </div>
-        <a href="/">
-          <Button>Learn more</Button>
+        <a href={buttonLink}>
+          <Button>{buttonText}</Button>
         </a>
       </div>
     </div>

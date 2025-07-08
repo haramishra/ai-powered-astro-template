@@ -2,10 +2,17 @@
 import type { CollectionEntry } from "astro:content";
 import MainLayout from "./main-layout.astro";
 import BreadCrumb from "@/components/bread-crumb.astro";
+import { cn } from "@/lib/utils";
 
 type Props = CollectionEntry<"pages"> & { banner?: boolean };
 const { data: frontmatter } = Astro.props;
-const { title, description, ogImage, banner = false } = frontmatter;
+const {
+  title,
+  description,
+  ogImage,
+  banner = false,
+  containerClass,
+} = frontmatter;
 const currentPath = Astro.url.pathname;
 
 console.log(banner);
@@ -20,7 +27,7 @@ console.log(banner);
       </div>
     )
   }
-  <div class="relative container py-10">
+  <div class={cn("relative container py-10", containerClass)}>
     <slot />
   </div>
 </MainLayout>
