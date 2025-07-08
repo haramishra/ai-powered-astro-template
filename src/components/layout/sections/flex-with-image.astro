@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
+import { cn } from "@/lib/utils";
 
 interface Props {
   heading: string;
@@ -12,14 +13,27 @@ interface Props {
   ctaLink: string;
   image: ImageMetadata;
   alt: string;
+  reverse: boolean;
 }
 
-const { heading, title, details, cta, ctaLink, image, alt } = Astro.props;
+const {
+  heading,
+  title,
+  details,
+  cta,
+  ctaLink,
+  image,
+  alt,
+  reverse = false,
+} = Astro.props;
 ---
 
-<div class="mx-auto mt-8 w-full space-y-20 md:mt-16">
+<section class="container mx-auto mt-8 w-full space-y-20 md:mt-16">
   <div
-    class="flex flex-col items-center gap-x-20 gap-y-6 md:flex-row md:odd:flex-row-reverse"
+    class={cn(
+      "flex flex-col items-center gap-x-20 gap-y-6 md:flex-row",
+      reverse && "md:flex-row-reverse"
+    )}
   >
     <div
       class="bg-muted border-border/50 aspect-[6/4] w-full basis-1/2 rounded-xl border"
@@ -47,4 +61,4 @@ const { heading, title, details, cta, ctaLink, image, alt } = Astro.props;
       </Button>
     </div>
   </div>
-</div>
+</section>
