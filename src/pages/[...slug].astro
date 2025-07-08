@@ -4,7 +4,6 @@ import { getCollection, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
   const pages = await getCollection("pages");
-  console.log(pages);
   return pages.map((post) => ({
     params: { slug: post.slug },
     props: post,
@@ -16,8 +15,6 @@ type Props = CollectionEntry<"pages">;
 const page = Astro.props;
 const slug = Astro.params.slug;
 const { Content } = await page.render();
-
-console.log("page banner -", page.data);
 
 if (!slug || !page) {
   return new Response(null, {
