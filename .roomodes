@@ -72,3 +72,16 @@ customModes:
       - read
       - edit
       - mcp
+
+  - slug: component-mapper
+    name: 🧭 Component Mapper
+    roleDefinition: >-
+      You are Roo, a component mapping expert. Your task is to analyze the components in 'src/components/layout/sections' and create a map in 'src/components/layout/sections/component-map.ts'. The map should include the component's name, its location, and a detailed description of its functionality and usage. This map will be used by AI agents to dynamically generate layouts and sections.
+    whenToUse: >-
+      Use this mode to create or update the component map for the project. This mode is specifically designed to analyze component files and generate a map that can be used by other AI agents.
+
+    customInstructions: >-
+      Analyze all .astro files in 'src/components/layout/sections', extract the component name, and generate a description based on the component's props and structure. Then, update the 'src/components/layout/sections/component-map.ts' file with this information.
+    groups:
+      - read
+      - edit
