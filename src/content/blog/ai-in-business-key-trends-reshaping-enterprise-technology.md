@@ -18,7 +18,7 @@ Hyper-automation represents a significant leap beyond traditional automation. It
 
 ### Real-World Impact: From Supply Chain to Finance
 
-The applications of hyper-automation are vast and transformative. In logistics, it optimizes entire supply chains by predicting demand, managing inventory, and streamlining distribution networks. Within finance departments, it automates complex processes like accounts payable and financial reconciliation, reducing manual effort and ensuring greater accuracy. Similarly, in customer service, it can manage everything from initial onboarding to ongoing support, creating a more seamless and responsive customer journey.
+The applications of hyper-automation are vast and transformative. In logistics, it optimizes entire supply chains by predicting demand, managing inventory, and streamlining distribution networks. Within finance departments, it automates complex processes like accounts payable and financial reconciliation, reducing manual effort and ensuring greater accuracy. Similarly, in customer service, it can manage everything from initial onboarding to ongoing support, creating a more seamless and responsive customer journey. For a more detailed look at automation, see our post on [how AI automation can 10x your business growth](/blog/how-ai-automation-can-10x-your-business-growth/).
 
 ## Trend 2: Generative AI's Creative and Analytical Disruption
 
