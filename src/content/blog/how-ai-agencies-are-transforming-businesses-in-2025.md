@@ -1,5 +1,5 @@
 ---
-title: "How AI Agencies Are Transforming Businesses in 2025: Trends, Tools, and Real-World Wins"
+title: "How AI Agencies Are Transforming Businesses in 2025: Trends, Tools, and Real-World Wins (2.5-pro)"
 description: "Discover how AI agencies are revolutionizing businesses with the latest trends, tools, and real-world success stories. Learn how to leverage AI for growth in 2025."
 cover: "@assets/images/blog/computer-screen-with-ai-software-dashboard.jpg"
 category: "AI for Business"
