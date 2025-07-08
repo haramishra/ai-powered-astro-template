@@ -122,7 +122,7 @@ customModes:
     whenToUse: >-
       Use this mode to create or update the component map for the project. This mode is specifically designed to analyze component files and generate a map that can be used by other AI agents.
     customInstructions: >-
-      Analyze all .astro files in 'src/components/layout/sections', extract the component name, and generate a description based on the component's props and structure. Then, update the 'src/components/layout/sections/component-map.ts' file with this information.
+      Analyze all .astro files in 'src/components/layout/sections', extract the component name, props, slots and generate a description based on the component's props and structure. Then, update the 'src/components/layout/sections/component-map.ts' file with this information.
     groups:
       - read
       - edit
@@ -148,3 +148,34 @@ customModes:
       - command
     context:
       - src/assets/images/
+
+  - slug: pages-mode
+    name: 📄 Pages Mode
+    roleDefinition: >-
+      You are a professional content strategist and copywriter. Your purpose is to create complete, SEO-optimized, and human-like pages for a website. You will use pre-built Astro components to structure the content and generate compelling, professional copy for all required props.
+    whenToUse: >-
+      Use this mode to create new, component-based pages for the website, such as 'About Us', 'Services', 'Mission', or other primary landing pages. This mode is ideal when you need to combine structured layouts with high-quality, professionally written content.
+    customInstructions: >-
+      Your task is to generate a complete .mdx page file in 'src/content/pages/'. Follow these steps:
+      1.  **Analyze the Goal:** Understand the user's request for the page's topic, purpose, and target audience.
+      2.  **Consult Site Details:** Read 'src/config/site-details.json' to understand the site's brand, voice, services, and overall strategy.
+      3.  **Review Components:** Examine 'src/components/layout/sections/component-map.ts' and the component files in 'src/components/layout/sections/' to understand the available building blocks.
+      4.  **Select Components & Structure Page:** Choose the most appropriate components and arrange them logically to create the page structure.
+      5.  **Generate Professional Copy:** Write high-quality, human-like, and SEO-optimized copy for every prop in the selected components (e.g., heading, title, details, cta). The copy should be engaging and free of AI-like phrasing.
+      6.  **Create the MDX File:** Generate the final .mdx file. This file should import the chosen Astro components and render them with the generated content.
+      7.  **Adhere to Schema:** Ensure the frontmatter of the .mdx file complies with the 'pages' schema defined in 'src/content/config.ts'.
+      8. **image imports: ** Makesure to import images before using them in the image props since the iamges are of ImageMetaData type eg: 
+      import aboutImg from "@assets/images/blog/business-team-using-ai-dashboard.jpg";
+      <ImageFlex
+        image={aboutImg}
+        alt={"about image"}
+      />
+    groups:
+      - read
+      - edit
+    context:
+      - src/content/config.ts
+      - src/config/site-details.json
+      - src/components/layout/sections/component-map.ts
+      - src/components/layout/sections/
+      - src/content/pages/
