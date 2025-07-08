@@ -64,6 +64,7 @@ This project integrates with Roo Code, an AI-powered coding assistant designed t
   - **Location**: Roo Code's operational modes and their underlying prompts are stored in the `.roomodes` directory.
   - **Customization**: You can fine-tune the agent's behavior, responses, and specific functionalities by editing the files within this directory. This allows you to tailor the AI agent to your project's specific needs and coding conventions, making it an even more powerful tool for development.
   - **How it Works**: Each file in `.roomodes` typically defines a "mode" or a specific set of instructions and prompts that guide the AI agent's responses in different contexts. By modifying these, you can refine the agent's understanding and output.
+  - **Important Note**: If the Roo modes are not showing up, make sure `.roomodes` auto-formatting is set to YAML. Sometimes the document formatter changes the format of `.roomodes`.
 
 ### Available Roo Modes
 
