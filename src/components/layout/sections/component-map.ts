@@ -1,7 +1,30 @@
-export const componentMap = {
-  FlexWImage: {
-    location: "@/components/layout/sections/flex-with-image.astro",
+interface ComponentProp {
+  name: string;
+  type: string;
+}
+
+interface ComponentDefinition {
+  name: string;
+  location: string;
+  description: string;
+  props: ComponentProp[];
+}
+
+export const componentMap: ComponentDefinition[] = [
+  {
+    name: "FlexWithImage",
+    location: "src/components/layout/sections/flex-with-image.astro",
     description:
-      "component renders a responsive two-column section with an image and accompanying text, including a heading, title, description, and a call-to-action button. It's ideal for use in marketing pages, feature highlights, or about sections where visual content is paired with supporting text. The layout can be reversed to alternate the image and text placement, making it useful for creating visually engaging, modular page sections that maintain consistency while offering layout variation.",
+      "A flexible layout section with an image and textual content, including a heading, title, description, and a call-to-action button. The layout order can be reversed.",
+    props: [
+      { name: "heading", type: "string" },
+      { name: "title", type: "string" },
+      { name: "details", type: "string" },
+      { name: "cta", type: "string" },
+      { name: "ctaLink", type: "string" },
+      { name: "image", type: "ImageMetadata" },
+      { name: "alt", type: "string" },
+      { name: "reverse", type: "boolean" },
+    ],
   },
-};
+];
